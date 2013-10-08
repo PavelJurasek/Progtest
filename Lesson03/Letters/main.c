@@ -1,42 +1,37 @@
 
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
     int i = 0, j = 0;
+    char input[81], output[81];
+
+    // get input string
+    scanf("%s", input);
     
-    char input[], output[];
-    
-    scanf("%s", word);
-    
-    while (word[i] != '\0')
+    while (input[i] != '\0') // end of string
     {
-        //lower case letters
-        if (word[i] >= 'a' && word[i] <= 'z')
-        {
-            output[j] = word[i] - 32;
-            j++;
+        if (i >= 80) { break; }
+        
+        // 'a' - decimal ASCII value of letter 'a'
+        
+        if (input[i] >= 'a' && input[i] <= 'z') {
+            output[j++] = input[i] - 32; // transforms lowercase letter to uppercase
         }
         
-        //capital letters
-        if (word[i] >= 'A' && word[i] <= 'Z')
-        {
-            output[j] = word[i] + 32;
-            j++;
+        // transforms uppercase letter to lowercase
+        if (input[i] >= 'A' && input[i] <= 'Z') {
+            output[j++] = input[i] + 32;
         }
         
-        //numbers
-        if (word[i] >= '0' && word[i] <= '9')
-        {
-            output[j] = word[i] + 49;
-            j++;
+        // transforms numbers to lowercase letter
+        if (input[i] >= '0' && input[i] <= '9') {
+            output[j++] = input[i] + 49;
         }
         
-        //
         i++;
     }
-    
+
     output[j] = '\0';
     
     printf("%s\n", output);
