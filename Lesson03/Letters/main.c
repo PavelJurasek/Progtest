@@ -5,6 +5,8 @@ int main(int argc, char *argv[])
 {
     int i = 0, j = 0;
     char input[81], output[81];
+//    char *input = (char*) malloc(255);
+//    char *output = (char*) malloc(255);
 
     // get input string
     scanf("%s", input);
@@ -35,6 +37,9 @@ int main(int argc, char *argv[])
     output[j] = '\0';
     
     printf("%s\n", output);
+    
+//    free(input);
+//    free(output);
     
     return 0;
 }
