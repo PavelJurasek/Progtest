@@ -7,14 +7,15 @@ int main()
 
     printf("Enter the numbers:\n");
     
-    while(scanf("%lf", &n) == 1){
-        if(n == 1000){
-            sum = sum + n;
+    while(scanf("%lf", &n) == 1) {
+        sum += n;
+        
+        if(n == 1000) {
             printf("The sum is: %.6f\n", sum);
             return 0;
         }
-        else sum = sum + n;
     }
+    
     printf("Invalid input.\n");
     return 0;
 }
