@@ -45,38 +45,38 @@ The algorithm used for the calculation (Meeus/Jones/Butcher algorithm): Choose a
 Submit a source file with the implementation of the easterReport function. The submitted file must contain the function itself and all your auxiliary functions needed called from the function. The #include preprocessor directives as well as main function may be included in the submitted file, however, they shall be enclosed in conditional compile blocks as shown below. We recommend to copy the template below, copy it into your source file and use it as a basis for your development.
 
 ```
-\#ifndef __PROGTEST__
-\#include <cstdio>
-\#include <cstdlib>
-\#include <cctype>
-\#include <cstring>
-\#include <iostream>
-\#include <iomanip>
-\#include <fstream>
-\#include <sstream>
-\#include <string>
+#ifndef __PROGTEST__
+#include <cstdio>
+#include <cstdlib>
+#include <cctype>
+#include <cstring>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <sstream>
+#include <string>
 using namespace std;
 
-\#define EASTER_OK                0
-\#define EASTER_INVALID_FILENAME  1
-\#define EASTER_INVALID_YEARS     2
-\#define EASTER_IO_ERROR          3
+#define EASTER_OK                0
+#define EASTER_INVALID_FILENAME  1
+#define EASTER_INVALID_YEARS     2
+#define EASTER_IO_ERROR          3
 
 
-\#endif /* __PROGTEST__ */
+#endif /* __PROGTEST__ */
 
 int easterReport ( const char * years, const char * outFileName )
  {
    /* todo */
  }
 
-\#ifndef __PROGTEST__
+#ifndef __PROGTEST__
 int main ( int argc, char * argv[] )
  {
    /* tests */
    return 0;
  }
-\#endif /* __PROGTEST__ */
+#endif /* __PROGTEST__ */
 ```
 
 
