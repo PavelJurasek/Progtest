@@ -129,7 +129,8 @@ int *parse(const char *input, int *status, int *cnt)
 		// following year will be used to fill a range
 		if (*input == '-') {
 			
-			if (count == 0 || range == RANGE_DISALLOWED || range == RANGE_OPEN) { // - sign at the beginning of the string or 2012-2015-2020
+			// - sign at the beginning of the string or 2012-2015-2020
+			if (count == 0 || range == RANGE_DISALLOWED || range == RANGE_OPEN) {
 				*status = EASTER_INVALID_YEARS;
 				break;
 			}
@@ -219,11 +220,7 @@ int *parse(const char *input, int *status, int *cnt)
 		}
 
 	}
-
-	// end of string closes last range
-//	if (range) {
-//		range--;
-//	}
+	
 	
 	// free pointer that held parsed year in string form
 	free(string);
@@ -231,7 +228,6 @@ int *parse(const char *input, int *status, int *cnt)
 	
 	// string ends with - sign, range is not complete
 	if (range == RANGE_OPEN || is_comma) {
-//		printf("status %d, range %d, comma %d\n", *status, range, is_comma);
 		*status = EASTER_INVALID_YEARS;
 	}
 	
@@ -350,54 +346,47 @@ int main (int argc, char *argv[])
 {
 	int status;
 	
-//	status = easterReport ( "2012,2013,2015-2020", "out0.html" ); /* return: 0 */
-//	printf("status: %d\n", status);
-//
-//	status = easterReport ( "2000 - 2014", "out1.html" ); /* return: 0 */
-//	printf("status: %d\n", status);
-//	
-//	status = easterReport ( "1890 - 1905  ,  2002        ,    2003-2003,2006,  2000", "out2.html" ); /* return: 0 */
-//	printf("status: %d\n", status);
-//	
-//	status = easterReport ( "2000,2011,2010-2020", "out3.html" ); /* return: 0 */
-//	printf("status: %d\n", status);
-//	
-//	status = easterReport ( "2000-3000", "out4.html" ); /* return: 2 */
-//	printf("status: %d\n", status);
-//	
-//	status = easterReport ( "2000", ".html" ); /* return: 1 */
-//	printf("status: %d\n", status);	
-//
+	status = easterReport ( "2012,2013,2015-2020", "out0.html" ); /* return: 0 */
+	printf("status: %d\n", status);
 
-	status = easterReport ( "2000-2001,2004", "a.html" ); /* return: 1 */
+	status = easterReport ( "2000 - 2014", "out1.html" ); /* return: 0 */
+	printf("status: %d\n", status);
+	
+	status = easterReport ( "1890 - 1905  ,  2002        ,    2003-2003,2006,  2000", "out2.html" ); /* return: 0 */
+	printf("status: %d\n", status);
+	
+	status = easterReport ( "2000,2011,2010-2020", "out3.html" ); /* return: 0 */
+	printf("status: %d\n", status);
+	
+	status = easterReport ( "2000-3000", "out4.html" ); /* return: 2 */
+	printf("status: %d\n", status);
+	
+	status = easterReport ( "2000", ".html" ); /* return: 1 */
+	printf("status: %d\n", status);	
+    
+	status = easterReport ( "	2012,-2042", "a.html" ); /* return: 2 */
+	printf("status: %d\n", status);	
+	
+	status = easterReport ( "2010,", "a.html" ); /* return: 2 */
+	printf("status: %d\n", status);	
+	
+	status = easterReport ( "-2010", "a.html" ); /* return: 2 */
 	printf("status: %d\n", status);	
 
-//	status = easterReport ( "2000	", "a.html" ); /* return: 1 */
-//	printf("status: %d\n", status);	
-//    
-//	status = easterReport ( "	2012,-2042", "a.html" ); /* return: 2 */
-//	printf("status: %d\n", status);	
-//	
-//	status = easterReport ( "2010,", "a.html" ); /* return: 2 */
-//	printf("status: %d\n", status);	
-//	
-//	status = easterReport ( "-2010", "a.html" ); /* return: 2 */
-//	printf("status: %d\n", status);	
-//
-//	status = easterReport ( "2010-", "a.html" ); /* return: 2 */
-//	printf("status: %d\n", status);	
-//	
-//	status = easterReport ( "2000-,2010", "a.html" ); /* return: 2 */
-//	printf("status: %d\n", status);	
-//	
-//	status = easterReport ( "2000-2000,2001", "a.html" ); /* return: 0 */
-//	printf("status: %d\n", status);
-//	
-//	status = easterReport ( "200 0-2001,2002", "a.html" ); /* return: 2 */
-//	printf("status: %d\n", status);	
-//	
-//	status = easterReport ( "     1999  -2000   ,2001-2002", "a.html" ); /* return: 0 */
-//	printf("status: %d\n", status);
+	status = easterReport ( "2010-", "a.html" ); /* return: 2 */
+	printf("status: %d\n", status);	
+	
+	status = easterReport ( "2000-,2010", "a.html" ); /* return: 2 */
+	printf("status: %d\n", status);	
+	
+	status = easterReport ( "2000-2000,2001", "a.html" ); /* return: 0 */
+	printf("status: %d\n", status);
+	
+	status = easterReport ( "200 0-2001,2002", "a.html" ); /* return: 2 */
+	printf("status: %d\n", status);	
+	
+	status = easterReport ( "     1999  -2000   ,2001-2002", "a.html" ); /* return: 0 */
+	printf("status: %d\n", status);
 
 	return EASTER_OK;
 }
